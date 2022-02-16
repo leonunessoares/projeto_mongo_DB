@@ -17,12 +17,13 @@ app.use (bodyParser.urlencoded({extended: true }));
 
 //Importar Rotas
 const notasRoutes = require ('./routes/notas');
-const minhasnotasRoutes = require ('./routes/minhasnotas');
 
 //rotas
-app.get('/',function(req,res){
-    res.render('home');
-});
+app.get('/', async function(req,res){
+    const notas = await db.getdb().db().collection('notas').find({}).toArray();
+    res.render ('home', {notas});
+  
+})
 
 
 app.listen(port, () => {
@@ -37,6 +38,6 @@ db.initdb((err,db) => {
     }
 })
 
-app.use ('/notas', notasRoutes,minhasnotasRoutes);
+app.use ('/notas', notasRoutes);
 
 

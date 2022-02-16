@@ -1,3 +1,30 @@
 <h1>
-    Aplicação com Node JS
+    Suas Notas
 </h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Título</th>
+            <th scope="col">Descrição</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each notas}}
+        <tr>
+            <th scope="row">{{@index}}</th>
+            <td class="title-column"><a href="notas/{{this._id}}"> {{ this.titulo}}</a></td>
+            <td class="actions-column">
+                <a href="notas/edit/{{this._id}}" class="btn btn-primary">Editar</a>
+            
+                <form action="notas/delete" method="post" >
+                    <input type="hidden" name="id" value="{{this._id}}">
+                    <input type="submit" class="btn btn-danger" value="Remover">
+                </form>
+            </td>
+        </tr>
+        {{else}}
+            <p>Não há notas lançadas!</p>
+        {{/each}}
+    </tbody>
+</table>
