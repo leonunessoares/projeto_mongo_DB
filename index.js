@@ -25,9 +25,9 @@ app.get('/',function(req,res){
 });
 
 
-//app.listen(port, () => {
+app.listen(port, () => {
     //console.log('projeto ok');
-//})
+})
 
 db.initdb((err,db) => {
     if (err){
