@@ -3,3 +3,6 @@ comandos para um novo projeto
 1 - npm init -y 
 
 2 - npm install body-parser express express-handlebars mongodb nodemon
+
+//Iniciar um projeto
+3 - npm run start
